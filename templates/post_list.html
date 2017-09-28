@@ -1,10 +1,16 @@
 {% extends "base_class.html" %}
 
 {% block content %}	
+<!-- {% if user.is_authenticate %}
 
+<p>Welcome {{ user.username }} !!!</p>  -->
+
+<!-- {% else %} -->
 <a href="/login">Login</a>
 <a href="/register">Register</a>
 <a href="/logout">Logout</a>
+<!-- {% endif %} -->
+
 <div class="col-sm-8 col-sm-offset-2">
 <h1>{{title}}</h1>
 

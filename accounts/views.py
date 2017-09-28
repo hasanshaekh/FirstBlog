@@ -10,6 +10,8 @@ from django.contrib.auth import(
 # Create your views here.
 from accounts.forms import UserLoginForm, UserRegisterForm
 
+
+
 def login_view(request):
 	title= "Login"
 	form=UserLoginForm(request.POST or None)
@@ -20,6 +22,23 @@ def login_view(request):
 		login(request,user)
 		return redirect("/")
 	return render(request,"form.html",{"form":form, "title":title})
+
+def dologin(request):
+	data={}
+	if request.method=='POST':
+		data['username']=request.POST.get('username')
+		data['password']=request.POST.get('password')
+
+		if user is not None:
+			if user.is_active:
+				login(request,user)
+				u=request.user.username
+				return redirect(check)
+		else:
+			return render(request,'post_list.html')
+
+	
+
 def register_view(request):
 	title= "Register"
 	form=UserRegisterForm(request.POST or None)

@@ -5,7 +5,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from posts.forms import PostForm
 from posts.models import Post
 
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def post_create(request):
+		# if not request.user.is_staff or not request.user.is_superuser:
+		# 	raise Http404
 
 	form=PostForm(request.POST or None)
 	if form.is_valid():
