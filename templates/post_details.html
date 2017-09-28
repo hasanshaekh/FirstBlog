@@ -1,0 +1,13 @@
+{% extends "base_class.html" %}
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">	
+<h1>{{title}}<small>{{instances.timestamp}}</small></h1>
+
+{{instances.title}}<br/>
+{{instances.content}}<br/>
+{{instances.id}}<br/>
+<div class="fb-comments" data-href="{{request.build_absolute_url}}" data-numposts="5"></div>
+
+</div>
+{% endblock content %}

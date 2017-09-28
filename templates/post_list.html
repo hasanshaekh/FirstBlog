@@ -1,0 +1,31 @@
+{% extends "base_class.html" %}
+
+{% block content %}	
+
+<a href="/login">Login</a>
+<a href="/register">Register</a>
+<a href="/logout">Logout</a>
+<div class="col-sm-8 col-sm-offset-2">
+<h1>{{title}}</h1>
+
+<a href="/create"  class="btn btn-primary" >Create Post</a>
+<br><br>
+{% for obj in object_list %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      <!-- <img src="..." alt="..."> -->
+      <div class="caption">
+
+        <h3><a href='{% url "detail" id=obj.id %}'>{{obj.title}}</a> <small>{{obj.timestamp|timesince}} ago</small></h3>
+        <p>{{obj.content|linebreaks|truncatechars:120}}</p>
+        <p><a href="{{obj.id}}" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endfor %}
+
+</div>
+{% endblock content %}
